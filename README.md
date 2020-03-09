@@ -32,4 +32,8 @@ Follow the [application-environment-variables.md](Application environment variab
 
 Access to the containers may be needed for debugging purposes.
 
-TODO
+Use the `container-shell.sh` script in the `tooling` directory to run a shell on a running container:
+
+```
+./container-shell.sh -s <service-name> -e environment -p <aws-profile>
+```
