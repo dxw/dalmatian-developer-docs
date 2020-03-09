@@ -8,9 +8,9 @@ The Dalmatian platform runs on AWS. For some tasks, you may require access to re
 
 You will be provided with AWS credentials that provide the access permissions required to complete these tasks.
 
-You will need to set up your AWS account the first time you log in. Follow the (AWS account First time setup)[aws-account-first-time-setup.md] documentation when you recieve your credentials.
+You will need to set up your AWS account the first time you log in. Follow the [AWS account First time setup](aws-account-first-time-setup.md) documentation when you recieve your credentials.
 
-To set up your local environment for AWS, follow the (Setting up AWS credentials on your local environment)[setting-up-aws-credentials-on-your-local-environment.md]
+To set up your local environment for AWS, follow the [Setting up AWS credentials on your local environment](setting-up-aws-credentials-on-your-local-environment.md)
 
 ## Deploying to Dalmatian
 
@@ -20,7 +20,7 @@ Deployments are automated, triggered when a branch is merged in, or a commit pus
 
 The `staging` environemnt tracks the `develop` branch, and the `prod` environemnt tracks the `master` branch.
 
-The deployment is controlled by AWS CodePipeline. To view the status of the pipeline or manually trigger a deployment, follow the (Deployment Pipelines)[deployment-pipelines.md] documentation.
+The deployment is controlled by AWS CodePipeline. To view the status of the pipeline or manually trigger a deployment, follow the [Deployment Pipelines](deployment-pipelines.md) documentation.
 
 ## Accessing a running container
 
