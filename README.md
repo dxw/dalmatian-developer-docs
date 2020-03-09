@@ -22,6 +22,12 @@ The `staging` environemnt tracks the `develop` branch, and the `prod` environemn
 
 The deployment is controlled by AWS CodePipeline. To view the status of the pipeline or manually trigger a deployment, follow the [Deployment Pipelines](deployment-pipelines.md) documentation.
 
+## Application environment variables
+
+Application environment variables are managed through AWS Parameter Store.
+
+Follow the [application-environment-variables.md](Application environment variables) documentation to view or change environment variables on the running applications.
+
 ## Accessing a running container
 
 Access to the containers may be needed for debugging purposes.
