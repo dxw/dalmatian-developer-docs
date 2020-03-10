@@ -59,7 +59,7 @@ for i in $( seq 0 $((CLUSTERS_LENGTH - 1)) ); do
   SERVICES_LENGTH=$(echo "$SERVICES" | jq -r '.serviceArns | length')
   for j in $( seq 0 $((SERVICES_LENGTH - 1)) ); do
     SERVICE_ARN=$(echo "$SERVICES" | jq -r --argjson j "$j" '.serviceArns[$j]')
-    if [[ "$SERVICE_ARN" != *"$SERVICE_NAME"* || "$SERVICE_ARN" == *"daemon"* || "$SERVICE_ARN" == *"worker"* ]]; then
+    if [[ "$SERVICE_ARN" != *"$SERVICE_NAME-$SERVICE_ENVIRONMENT"* || "$SERVICE_ARN" == *"daemon"* || "$SERVICE_ARN" == *"worker"* ]]; then
       continue
     fi
     TASK_ARN=$(aws ecs list-tasks --service-name "$SERVICE_ARN" --cluster "$CLUSTER_ARN" --profile "$PROFILE" | jq -r '.taskArns[0]')
