@@ -37,3 +37,16 @@ Use the `container-shell.sh` script in the `tooling` directory to run a shell on
 ```
 ./container-shell.sh -s <service-name> -e environment -p <aws-profile>
 ```
+
+The valid 'environment' arguments (`-e`) are:
+
+- `staging` for Thames Valley staging
+- `prod` for Thames Valley production
+- `metstage` for Metropolitan staging
+- `metprod` for Metropolitan production
+
+The valid 'service-name' arguments (`-s`) are:
+
+- `web`
+- `mid`
+- `pay`
