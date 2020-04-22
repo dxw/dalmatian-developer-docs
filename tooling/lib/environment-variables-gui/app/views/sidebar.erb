@@ -1,0 +1,20 @@
+<div class="sidebar">
+  <ul>
+    <% infrastructures.each do |infrastructure_name,infrastructure_config| -%>
+      <li><%= infrastructure_name %>
+        <ul>
+          <li><a href="/infrastructure-variables/<%= infrastructure_name %>">Infrastructure variables</a></li>
+          <% if !infrastructure_config['services'].nil? -%>
+            <li>Service environment variables
+              <ul>
+                <% infrastructure_config['services'].each do |service| %>
+                  <li><a href="/service-environment-variables/<%= infrastructure_name %>/<%= service['name'] %>"><%= service['name'] %></a></li>
+                 <% end -%>
+              </ul>
+            </li>
+          <% end -%>
+        </ul>
+      </li>
+    <% end -%>
+  </ul>
+</div>

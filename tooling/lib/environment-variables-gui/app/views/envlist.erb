@@ -1,0 +1,20 @@
+<%= erb :header %>
+<%= erb :sidebar, :locals => { :infrastructures => infrastructures } %>
+<%= title %></br>
+<% infrastructures[infrastructure_name]['environments'].each do |environment_name, _environment_config| -%>
+  <a href="?environment=<%= environment_name %>"><%= environment_name %></a></br>
+<% end -%>
+<form name="envars" id="envars_form" method="POST">
+  <% if !envars.empty? -%>
+    <% envars.each_with_index do |envar, i| -%>
+      <input type="text" name="envars[<%= i %>][name]" value="<%= envar['name'] %>">
+      <textarea name="envars[<%= i %>][value]" cols="100" rows="3"><%= envar['value'] %></textarea>
+      <button type="button" onclick="delete_envar_input(<%= i %>)">Delete</button></br></br>
+    <% end -%>
+<% end -%>
+</form>
+<% if environment != 'none' -%>
+  <button type="button" onclick="add_new_envar_input()">Add new</button>
+  <button type="submit" onclick="document.getElementById('envars_form').submit();">Save</button>
+<% end -%>
+<%= erb :footer %>

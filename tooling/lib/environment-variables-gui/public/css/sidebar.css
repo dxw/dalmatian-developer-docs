@@ -1,0 +1,16 @@
+.sidebar {
+  float: left;
+  width: 25%;
+}
+
+.sidebar ul {
+  margin-left: -5%;
+  display: block;
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  display: block;
+  padding-left: 1%;
+  border: 1px solid;
+}
