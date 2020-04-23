@@ -10,7 +10,7 @@ When you recieve your username and password, you will need to configure MFA for 
 
 ## Logging in
 
-1. Go to the[AWS Sign in page](https://console.aws.amazon.com/console/home?nc2=h_ct&src=header-signin)
+1. Go to the [AWS Sign in page](https://console.aws.amazon.com/console/home?nc2=h_ct&src=header-signin)
 
 2. Select 'IAM user'
 
