@@ -35,5 +35,5 @@ Access to the containers may be needed for debugging purposes.
 Use the `container-shell.sh` script in the `tooling` directory to run a shell on a running container:
 
 ```
-./container-shell.sh -s <service-name> -e environment -p <aws-profile>
+./container-shell.sh -i <infrastructure_name> -s <service-name> -e <environment> -p <aws-profile>
 ```
