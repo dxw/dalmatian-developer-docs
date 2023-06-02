@@ -21,6 +21,16 @@ then
  usage
 fi
 
+if ! command -v session-manager-plugin > /dev/null
+then
+  echo "This script requires the \`session-manager-plugin\` to be installed:"
+  echo "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html"
+  echo "Also, If you are running an Mac M1 or above, you'll need to install Rosetta 2 by running:"
+  echo "softwareupdate --install-rosetta"
+  exit 1
+fi
+
+
 PROFILE="default"
 
 while getopts "p:e:s:i:c:h" opt; do
@@ -52,6 +62,8 @@ done
 if [[ -z "$SERVICE_ENVIRONMENT" || -z "$SERVICE_NAME" || -z $SERVICE_INFRASTRUCTURE ]]; then
   usage
 fi
+
+
 
 CLUSTERS=$(aws ecs list-clusters --profile "$PROFILE")
 CLUSTERS_LENGTH=$(echo "$CLUSTERS" | jq -r '.clusterArns | length')
