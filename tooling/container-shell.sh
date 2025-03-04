@@ -94,8 +94,9 @@ for i in $( seq 0 $((CLUSTERS_LENGTH - 1)) ); do
     CONTAINER_NAME_PREFIX="ecs-$(echo "$TASK_DEFINITION_ARN" | cut -d'/' -f2| sed -e 's/:/-/')-$SERVICE_INFRASTRUCTURE-$SERVICE_NAME-$SERVICE_ENVIRONMENT-"
     CONTAINER_INSTANCE_ID=$(aws ecs describe-container-instances --cluster "$CLUSTER_ARN" --container-instances "$CONTAINER_INSTANCE_ARN" --profile "$PROFILE" | jq -r '.containerInstances[0].ec2InstanceId')
     CONTAINER_NAME=$(echo "$TASKS" | jq -r '.tasks[0].containers[0].name')
-    echo "Connecting to $CONTAINER_NAME on instance $CONTAINER_INSTANCE_ID ..."
-    aws ssm start-session --target "$CONTAINER_INSTANCE_ID" --profile "$PROFILE" --document-name "$SERVICE_INFRASTRUCTURE-$SERVICE_NAME-$SERVICE_ENVIRONMENT-ecs-service-container-access" --parameters "ContainerNamePrefix=$CONTAINER_NAME_PREFIX"
+    IAM_USER_NAME=$(aws sts get-caller-identity --profile "$PROFILE" | jq -r '.UserId' | cut -d':' -f2)
+    echo "Connecting to $CONTAINER_NAME as console user '$IAM_USER_NAME' on instance $CONTAINER_INSTANCE_ID ..."
+    aws ssm start-session --target "$CONTAINER_INSTANCE_ID" --profile "$PROFILE" --document-name "$SERVICE_INFRASTRUCTURE-$SERVICE_NAME-$SERVICE_ENVIRONMENT-ecs-service-container-access" --parameters "ContainerNamePrefix=$CONTAINER_NAME_PREFIX,ConsoleUser=$IAM_USER_NAME"
     exit 0
   done
 done
